@@ -136,7 +136,9 @@ defer(function() {
                         // extract course id from url
                         var courseId = window.location.href.split('/')[4];
                         // build api url
-                        var subUrl = `/api/v1/courses/${courseId}/assignments/${assignId}/submissions/sis_user_id:${student}`;
+                        // From https://canvas.instructure.com/doc/api/submissions.html#method.submissions_api.update
+                        // PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
+                        var subUrl = `/api/v1/courses/${courseId}/assignments/${assignId}/submissions/${student}`;
                         // build request and canned error message in case it fails
                         requests.push({
                             request: {
